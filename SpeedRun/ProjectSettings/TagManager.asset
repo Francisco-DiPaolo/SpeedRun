@@ -6,6 +6,8 @@ TagManager:
   tags:
   - obstacle
   - Road
+  - PowerUp
+  - Grounded
   layers:
   - Default
   - TransparentFX

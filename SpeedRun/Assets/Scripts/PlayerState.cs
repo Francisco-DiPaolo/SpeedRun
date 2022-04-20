@@ -1,14 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerState : MonoBehaviour
 {
     public bool isAlive;
     public Timer gameController;
-    private Road road;
+    //private Road road;
     private Player player;
+    private Contador contador;
     private GameObject Car;
+    public GameObject powerUp;
 
     [SerializeField] Transform spawnPoint;
 
@@ -16,8 +19,9 @@ public class PlayerState : MonoBehaviour
     {
         isAlive = true;
         gameController = GameObject.FindWithTag("GameController").GetComponent<Timer>();
-        road = FindObjectOfType<Road>();
+        //road = FindObjectOfType<Road>();
         player = FindObjectOfType<Player>();
+        contador = FindObjectOfType<Contador>();
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -30,19 +34,30 @@ public class PlayerState : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("PowerUp"))
+        {
+            player.vel += 1;
+            Destroy(other.gameObject);
+            contador.Punto();
+        }  
+    }
+
     void Die()
     {
         gameController.Perder();
-        road.velocidad = 0;
+        //road.velocidad = 0;
         player.vel = 0;
     }
 
     public void Respawn()
     {
-        transform.position = spawnPoint.position;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        /*transform.position = spawnPoint.position;
         isAlive = true;
         gameController.isplaying = true;
         road.velocidad = 0.4f;
-        player.vel = 40;
+        player.vel = 40;*/
     }
 }

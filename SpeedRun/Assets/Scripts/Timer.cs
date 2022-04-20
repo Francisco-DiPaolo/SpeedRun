@@ -9,13 +9,13 @@ public class Timer : MonoBehaviour
     private float StartTime;
     public bool isplaying;
     private PlayerState player;
-    private Road road;
+    //private Road road;
     public float TimeReset;
 
     void Start()
     {
         player = GameObject.FindWithTag("Player").GetComponent<PlayerState>();
-        road = GameObject.FindWithTag("Road").GetComponent<Road>();
+        //road = GameObject.FindWithTag("Road").GetComponent<Road>();
         StartTime = Time.time;
         isplaying = true;
         TimeReset = 0;
@@ -26,7 +26,7 @@ public class Timer : MonoBehaviour
         if (Input.GetKeyDown("r") && !isplaying)
         {
             player.Respawn();
-            road.RespawnRoad();
+            //road.RespawnRoad();
             TimeReset = Time.time;
         }
 

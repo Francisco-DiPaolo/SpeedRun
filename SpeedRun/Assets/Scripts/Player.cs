@@ -5,16 +5,20 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     Rigidbody rb;
-
     public float vel;
-    //public GameObject textDerrota;
+    private float horizontalInput;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-
-        //textDerrota.SetActive(false);
     }
+
+    /*private void Update()
+    {
+        horizontalInput = Input.GetAxis("Horizontal");
+
+        rb.AddRelativeForce(new Vector3(horizontalInput, 0, 0) * vel * Time.deltaTime);
+    }*/
 
     void FixedUpdate()
     {
@@ -28,12 +32,4 @@ public class Player : MonoBehaviour
             rb.AddRelativeForce(vel, 0f, 0, ForceMode.Force);
         }
     }
-
-    /*private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Enemy"))
-        {
-            textDerrota.SetActive(true);
-        }
-    }*/
 }

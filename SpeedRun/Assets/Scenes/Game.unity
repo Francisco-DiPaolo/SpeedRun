@@ -697,6 +697,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   time: {fileID: 202957658}
   isplaying: 0
+  TimeReset: 0
 --- !u!4 &407129904
 Transform:
   m_ObjectHideFlags: 0
@@ -1316,7 +1317,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fc3266ce2f625944944dae2a96f85d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocidad: 0.408
+  velocidad: 0.4
   spawnPoint: {fileID: 1953310464}
 --- !u!1001 &1302370111
 PrefabInstance:
@@ -2245,6 +2246,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1291358691}
     m_Modifications:
+    - target: {fileID: 311768321242923739, guid: 1f389b49671892e49a57f0245a56270d, type: 3}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 311768321242923739, guid: 1f389b49671892e49a57f0245a56270d, type: 3}
+      propertyPath: m_Constraints
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5615649064662929636, guid: 1f389b49671892e49a57f0245a56270d, type: 3}
       propertyPath: m_Name
       value: Cube

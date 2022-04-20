@@ -9,10 +9,6 @@ public class Road : MonoBehaviour
 
     [SerializeField] Transform spawnPoint;
 
-    private void Start()
-    {
-        
-    }
     void FixedUpdate()
     {
         transform.Translate(0, 0, -velocidad);

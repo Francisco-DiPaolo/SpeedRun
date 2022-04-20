@@ -10,6 +10,7 @@ public class Timer : MonoBehaviour
     public bool isplaying;
     private PlayerState player;
     private Road road;
+    public float TimeReset;
 
     void Start()
     {
@@ -17,6 +18,7 @@ public class Timer : MonoBehaviour
         road = GameObject.FindWithTag("Road").GetComponent<Road>();
         StartTime = Time.time;
         isplaying = true;
+        TimeReset = 0;
     }
 
     void Update()
@@ -25,11 +27,11 @@ public class Timer : MonoBehaviour
         {
             player.Respawn();
             road.RespawnRoad();
-            
+            TimeReset = Time.time;
         }
 
         if (!isplaying) return;
-        float t = Time.time - StartTime;
+        float t = Time.time - StartTime - TimeReset;
 
         string Minutos = ((int)t / 60).ToString();
         string Segundos = (t % 60).ToString("f2");

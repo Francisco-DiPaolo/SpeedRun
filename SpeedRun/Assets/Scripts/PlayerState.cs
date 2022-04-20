@@ -6,6 +6,9 @@ public class PlayerState : MonoBehaviour
 {
     public bool isAlive;
     public Timer gameController;
+    private Road road;
+    private Player player;
+    private GameObject Car;
 
     [SerializeField] Transform spawnPoint;
 
@@ -13,6 +16,8 @@ public class PlayerState : MonoBehaviour
     {
         isAlive = true;
         gameController = GameObject.FindWithTag("GameController").GetComponent<Timer>();
+        road = FindObjectOfType<Road>();
+        player = FindObjectOfType<Player>();
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -28,6 +33,8 @@ public class PlayerState : MonoBehaviour
     void Die()
     {
         gameController.Perder();
+        road.velocidad = 0;
+        player.vel = 0;
     }
 
     public void Respawn()
@@ -35,5 +42,7 @@ public class PlayerState : MonoBehaviour
         transform.position = spawnPoint.position;
         isAlive = true;
         gameController.isplaying = true;
+        road.velocidad = 0.4f;
+        player.vel = 40;
     }
 }
